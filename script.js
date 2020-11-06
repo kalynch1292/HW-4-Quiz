@@ -13,29 +13,18 @@
 
 
 function quizLoop() {
-  for(var i = 0 < quizQuestions[prompt].options.length; i++;) {
-    //display current question to user//
-
+  document.getElementById("text").innerHTML = quizQuestions[0].prompt;
+  document.getElementById("answerZero").innerHTML = quizQuestions[0].options[0];
+  document.getElementById("answerOne").innerHTML = quizQuestions[0].options[1];;
+  document.getElementById("answerTwo").innerHTML = quizQuestions[0].options[2];
+  
+  
 
   }
-}
 
 
 
 
-// function quizLoop () {
-//   // confused here but//
-//   //this loops through question array//
-//   for (var i = 0; i < questions.length; i++) {
-//     questionsDiv.innerHTML = "";
-
-//     // Appends question title only//
-
-//     var userQuestion = questions[questionIndex].prompt;
-//     var userChoices = choices[questionIndex].choices;
-//     questionsDiv.textContent = userQuestion;
-//   }
-// }
 
 
 
