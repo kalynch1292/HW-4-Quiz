@@ -1,15 +1,14 @@
-// all HTML elements for manipluation//
+var score = 0;
+var questionIndex = 0;
+var timerEl = document.querySelector("#timeLeft");
+var questionsDiv = document.querySelector("#questionsDiv");
+var wrapper = document.querySelector("#wrapper");
+var button = document.getElementById("startQuiz");
+var answerButtons = document.getElementById("answerBubble");
 
-/// Quiz Questions ///
+var secondsLeft = 90;
+var timePlus = setTime + 10;
 
-// var nextBtn = document.querySelector(#next);
-
-// nextbtn.addEventListener("click," startQuiz);
-
-// start quiz //
-
-
-setTime();
 
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -25,18 +24,21 @@ function setTime() {
 
 
 function quizLoop() {
-  setTime();
   document.getElementById("text").innerHTML = quizQuestions[0].prompt;
+  setTime();
   document.getElementById("answerZero").innerHTML = quizQuestions[0].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[0].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[0].options[2];
   answerButtons.addEventListener("click", questionTwo)
+  if (document.getElementById("answerZero", "answerTwo").clicked) {
+    (timePlus)
+  }
+
 
 }
 
 
 function questionTwo(){
-  document.getElementById("text").innerHTML = quizQuestions[1].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[1].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[1].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[1].options[2];
@@ -45,7 +47,6 @@ function questionTwo(){
 }
 
 function questionThree(){
-  document.getElementById("text").innerHTML = quizQuestions[2].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[2].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[2].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[2].options[2];
@@ -54,7 +55,6 @@ function questionThree(){
 }
 
 function questionFour(){
-  document.getElementById("text").innerHTML = quizQuestions[3].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[3].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[3].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[3].options[2];
@@ -104,11 +104,3 @@ var quizQuestions = [
 
 
 
-var score = 0;
-var questionIndex = 0;
-var timerEl = document.querySelector("#timeLeft");
-var questionsDiv = document.querySelector("#questionsDiv");
-var wrapper = document.querySelector("#wrapper");
-var secondsLeft = 60;
-var button = document.getElementById("startQuiz");
-var answerButtons = document.getElementById("answerBubble");
