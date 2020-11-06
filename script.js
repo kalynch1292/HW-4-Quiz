@@ -9,19 +9,58 @@
 // start quiz //
 
 
+setTime();
 
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timerEl.textContent = "Time Left " + secondsLeft;
+
+    if (secondsLeft === 0) {
+      clearInterval(timerInterval);
+    }
+
+  }, 1000);
+}
 
 
 function quizLoop() {
+  setTime();
   document.getElementById("text").innerHTML = quizQuestions[0].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[0].options[0];
-  document.getElementById("answerOne").innerHTML = quizQuestions[0].options[1];;
+  document.getElementById("answerOne").innerHTML = quizQuestions[0].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[0].options[2];
-  
+  answerButtons.addEventListener("click", questionTwo)
+
+}
+
+
+function questionTwo(){
+  document.getElementById("text").innerHTML = quizQuestions[1].prompt;
+  document.getElementById("answerZero").innerHTML = quizQuestions[1].options[0];
+  document.getElementById("answerOne").innerHTML = quizQuestions[1].options[1];
+  document.getElementById("answerTwo").innerHTML = quizQuestions[1].options[2];
+  answerButtons.addEventListener("click", questionThree)
+
+}
+
+function questionThree(){
+  document.getElementById("text").innerHTML = quizQuestions[2].prompt;
+  document.getElementById("answerZero").innerHTML = quizQuestions[2].options[0];
+  document.getElementById("answerOne").innerHTML = quizQuestions[2].options[1];
+  document.getElementById("answerTwo").innerHTML = quizQuestions[2].options[2];
+  answerButtons.addEventListener("click", questionFour)
+
+}
+
+function questionFour(){
+  document.getElementById("text").innerHTML = quizQuestions[3].prompt;
+  document.getElementById("answerZero").innerHTML = quizQuestions[3].options[0];
+  document.getElementById("answerOne").innerHTML = quizQuestions[3].options[1];
+  document.getElementById("answerTwo").innerHTML = quizQuestions[3].options[2];
   
 
-  }
-
+}
 
 
 
@@ -43,7 +82,7 @@ var quizQuestions = [
   },
 
   {
-    prompt: "What is the difference between " == " and " === "",
+    prompt: "What is the difference between '==' and '===' ",
     options: ["No difference", " '==' does not check datatype of variable but '===' does", " '==' is only used for functions.", "Pass."],
     answerIndex: 1
   },
@@ -65,25 +104,11 @@ var quizQuestions = [
 
 
 
-//more variables//
 var score = 0;
 var questionIndex = 0;
-// var currentTime = document.querySelector("#currentTime");
 var timerEl = document.querySelector("#timeLeft");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 var secondsLeft = 60;
 var button = document.getElementById("startQuiz");
-
-setTime();
-function setTime() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timerEl.textContent = "Time Left " + secondsLeft;
-
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-    }
-
-  }, 1000);
-}
+var answerButtons = document.getElementById("answerBubble");
