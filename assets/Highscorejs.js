@@ -15,7 +15,7 @@ const liMaker = (text) => {
 }
 
 form.addEventListener('submit', function (event) {
-  evemt.preventDefault();
+  event.preventDefault();
 
   // need to stringify for array//
 
