@@ -7,7 +7,7 @@ var button = document.getElementById("startQuiz");
 var answerButtons = document.getElementById("answerBubble");
 var secondsLeft = 60;
 var score = "";
-var scoreArray= JSON.parse(localStorage.getItem("highscores")) || []
+var scoreArray= JSON.parse(localStorage.getItem("highscore")) || []
 var currentPrompt = 0;
 
 
@@ -99,7 +99,7 @@ var quizQuestions = [
 
 answerBubble.addEventListener("click", function (event){
   event.preventDefault();
-  if (event.target.matches("button")) {
+  if(event.target.matches("button")){
     var guess = event.target.getAttribute("id")
     console.log(currentPrompt)
     if (guess = questionIndex[currentPrompt -1].answer) {
