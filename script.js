@@ -6,8 +6,8 @@ var wrapper = document.querySelector("#wrapper");
 var button = document.getElementById("startQuiz");
 var answerButtons = document.getElementById("answerBubble");
 
-var secondsLeft = 90;
-var timePlus = setTime + 10;
+var secondsLeft = 60;
+var wrong = secondsLeft +10
 
 
 function setTime() {
@@ -23,6 +23,8 @@ function setTime() {
 }
 
 
+ 
+
 function quizLoop() {
   document.getElementById("text").innerHTML = quizQuestions[0].prompt;
   setTime();
@@ -30,15 +32,13 @@ function quizLoop() {
   document.getElementById("answerOne").innerHTML = quizQuestions[0].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[0].options[2];
   answerButtons.addEventListener("click", questionTwo)
-  if (document.getElementById("answerZero", "answerTwo").clicked) {
-    (timePlus)
-  }
-
-
 }
 
 
-function questionTwo(){
+
+
+function questionTwo() {
+  document.getElementById("text").innerHTML = quizQuestions[1].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[1].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[1].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[1].options[2];
@@ -46,7 +46,8 @@ function questionTwo(){
 
 }
 
-function questionThree(){
+function questionThree() {
+  document.getElementById("text").innerHTML = quizQuestions[2].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[2].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[2].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[2].options[2];
@@ -54,14 +55,14 @@ function questionThree(){
 
 }
 
-function questionFour(){
+function questionFour() {
+  document.getElementById("text").innerHTML = quizQuestions[3].prompt;
   document.getElementById("answerZero").innerHTML = quizQuestions[3].options[0];
   document.getElementById("answerOne").innerHTML = quizQuestions[3].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[3].options[2];
-  
+  answerButtons.addEventListener("click",  clearInterval)
 
 }
-
 
 
 
@@ -71,36 +72,26 @@ function questionFour(){
 var quizQuestions = [
   {
     prompt: "What is a while loop?",
-    options: ["A While loop never stops", "A while loop executes a set of statements as long as a condition is true, Does not require a function", "Pass"],
-    answerIndex: 1
+    options: ["A While loop never stops", "A while loop executes a set of statements as long as a condition is true", "Pass"],
+    answer: "A while loop executes a set of statements as long as a condition is true"
   },
 
   {
     prompt: "How is a while loop different from an if loop",
     options: ["An if loop only runs through one block of code a certain number of times but a while loop runs until the statement is false.", "They are the same.", "if loops do not exist.", "Pass."],
-    answerIndex: 0
+    answer: "An if loop only runs through one block of code a certain number of times but a while loop runs until the statement is false."
   },
 
   {
     prompt: "What is the difference between '==' and '===' ",
     options: ["No difference", " '==' does not check datatype of variable but '===' does", " '==' is only used for functions.", "Pass."],
-    answerIndex: 1
+    answer: " '==' does not check datatype of variable but '===' does",
   },
 
   {
     prompt: "What does the term Booleans mean?",
     options: ["A type of loop", "Another term for a Variable", "Datatype that only takes 'true' or 'false' values", "Pass."],
-    answerIndex: 3
+    answer: "Datatype that only takes 'true' or 'false' values"
   }
 
 ];
-
-
-
-
-
-
-
-
-
-
