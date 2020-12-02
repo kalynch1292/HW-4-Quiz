@@ -5,4 +5,4 @@ JavaScript Quiz:
 
 
 Image of deployed site
-![quizhomepage](./assets/quizhomepage.png)
+![quizhomepage](./assets/quizhomepage.PNG)
