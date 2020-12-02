@@ -10,6 +10,7 @@ var score = "";
 var scoreArray = JSON.parse(localStorage.getItem("highscore")) || []
 var currentPrompt = 0;
 var timerInterval;
+var nextBtn = document.getElementById("next");
 
 function setTime() {
   timerInterval = setInterval(function () {
@@ -107,21 +108,30 @@ var quizQuestions = [
 
 answerBubble.addEventListener("click", function (event) {
   event.preventDefault();
-  if (event.target.matches("button") &&quizIndex<4) {
+  if (event.target.matches("button") && quizIndex < 4) {
     var guess = event.target.textContent;
-    console.log(guess);
-    console.log("string",quizQuestions[quizIndex].answer);
-    if (guess === quizQuestions[quizIndex].answer) {
+    // console.log(guess);
+    // console.log("string", quizQuestions[quizIndex].answer);
+    if (guess !== quizQuestions[quizIndex].answer) {
       secondsLeft -= 10;
     }
-    if (currentPrompt === quizIndex.length) {
-      score == secondsLeft
-      localStorage.set("highscore", JSON.stringify(score))
-      location.href = "highscore.html"
-    }
+    // console.log(currentPrompt)
+    // console.log(quizQuestions.length)
+    // if (currentPrompt === quizIndex.length) {
+    //   score == secondsLeft
+    //   localStorage.set("highscore", JSON.stringify(score))
+    //   location.href = "highscore.html"
+    // }
+  } else {
+    console.log(secondsLeft)
+    localStorage.setItem("finalScore", secondsLeft);
   }
 
 
 })
 
-//
+nextBtn.addEventListener("click", function () {
+  nextBtn.style.display = "none";
+})
+
+
