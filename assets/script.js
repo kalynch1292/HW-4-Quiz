@@ -11,6 +11,12 @@ var scoreArray = JSON.parse(localStorage.getItem("highscore")) || []
 var currentPrompt = 0;
 var timerInterval;
 var nextBtn = document.getElementById("next");
+var highscore = document.getElementById("highScore");
+var questionText = document.getElementById("text")
+var scoreInstructions = document.getElementById("scoreInstructions")
+var instructions = document.getElementById("instructions")
+
+scoreInstructions.classList.add("hidden");
 
 function setTime() {
   timerInterval = setInterval(function () {
@@ -22,12 +28,9 @@ function setTime() {
     }
 
   }, 1000);
+  
+
 }
-
-// secondsLeft -= 10;
-
-
-
 function quizLoop() {
   document.getElementById("text").innerHTML = quizQuestions[0].prompt;
   setTime();
@@ -59,7 +62,22 @@ function questionThree() {
   answerButtons.addEventListener("click", questionFour)
 
 }
-
+function endGame (){
+  console.log('here')
+  answerButtons.classList.add("hidden");
+  highscore.classList.remove("hidden");
+  instructions.classList.add("hidden");
+}
+function storeIntials(e){
+  e.preventDefault()
+  var intials = document.getElementById("item").value
+  console.log(intials)
+  var highScoreArr = JSON.parse(localStorage.getItem("score"))||[]
+  console.log(highScoreArr)
+  highScoreArr.push({"intials":intials, "score":secondsLeft})
+  localStorage.setItem("score", JSON.stringify(highScoreArr))
+  window.location.replace("./assets/highscore.html")
+}
 function questionFour() {
   quizIndex++;
   document.getElementById("text").innerHTML = quizQuestions[3].prompt;
@@ -67,8 +85,9 @@ function questionFour() {
   document.getElementById("answerOne").innerHTML = quizQuestions[3].options[1];
   document.getElementById("answerTwo").innerHTML = quizQuestions[3].options[2];
   answerButtons.addEventListener("click", function () {
-    console.log("test")
+    
     clearInterval(timerInterval);
+    endGame()
   })
 }
 
@@ -104,34 +123,35 @@ var quizQuestions = [
 
 ];
 
-//console.log//
+
 
 answerBubble.addEventListener("click", function (event) {
   event.preventDefault();
   if (event.target.matches("button") && quizIndex < 4) {
     var guess = event.target.textContent;
-    // console.log(guess);
-    // console.log("string", quizQuestions[quizIndex].answer);
     if (guess !== quizQuestions[quizIndex].answer) {
       secondsLeft -= 10;
     }
-    // console.log(currentPrompt)
-    // console.log(quizQuestions.length)
-    // if (currentPrompt === quizIndex.length) {
-    //   score == secondsLeft
-    //   localStorage.set("highscore", JSON.stringify(score))
-    //   location.href = "highscore.html"
-    // }
+  
   } else {
+    questionText.classList.add("hidden");
+    scoreInstructions.classList.add("show");
+    instructions.classList.add("remove")
+
+
+
     console.log(secondsLeft)
     localStorage.setItem("finalScore", secondsLeft);
+  
   }
 
 
 })
 
 nextBtn.addEventListener("click", function () {
-  nextBtn.style.display = "none";
+  quizLoop()
+  answerButtons.classList.remove("hidden")
+  nextBtn.classList.add("hidden");
 })
-
+highscore.addEventListener("submit",storeIntials)
 

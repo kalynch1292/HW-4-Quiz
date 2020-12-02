@@ -20,20 +20,26 @@
 
         <div id="questionsDiv">
             <h1>Coding Quiz</h1>
-            <p>Answer the questions in the given amount of time. Wrong answers will be penelized and take away time.</p>
+            <p id="instructions">Answer the questions in the given amount of time. Wrong answers will be penelized and take away time.</p>
+            <p id="scoreInstructions">Enter Your Initals and Seconds Left on the Timer</p>
             <ul id="choices"></ul>
 
             <h1 id="text"></h1>
 
-            <section id=answerBubble>
+            <section id=answerBubble class="hidden">
                 <br>
                 <button id="answerZero"></button>
-                <button id="answerOne"></button> 
+                <button id="answerOne"></button>
                 <button id="answerTwo"></button>
             </section>
             <br>
 
-            <button id="next" class="btn" onclick="quizLoop()">Next</button>
+            <form id="highScore" class="hidden">
+                <label for="intials">Please enter your intials</label>
+                <input id="item" type="text" name="intials" placeholder="Initals">
+                <button type="submit">submit</button>
+            </form>
+            <button id="next" class="btn">Next</button>
 
 
 
